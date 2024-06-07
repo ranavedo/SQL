@@ -44,9 +44,9 @@ WHERE Title='Sales Support Agent'
 
 SELECT e.FirstName
 , e.LastName
-, SUM(i.Total) AS Total_Sales
+, ROUND(SUM(i.Total)) AS Total_Sales
 FROM chinook.employees as e
-inner join chinook.customers as c
+INNER JOIN chinook.customers as c
 ON e.EmployeeId = c.SupportRepId
 INNER join chinook.invoices as i
 ON c.CustomerId=i.CustomerId
@@ -77,7 +77,7 @@ WHERE InvoiceDate LIKE '2009%'
 ;
 --What are the total sales for 2009?
 
-SELECT SUM(Total)
+SELECT ROUND(SUM(Total))
 FROM chinook.invoices
 WHERE InvoiceDate LIKE '2009%'
 ;
@@ -85,7 +85,7 @@ WHERE InvoiceDate LIKE '2009%'
 
 SELECT e.FirstName
 , e.LastName
-, SUM(i.Total) AS Total_Sales
+, ROUND(SUM(i.Total)) AS Total_Sales
 FROM chinook.employees as e
 INNER JOIN chinook.customers as c
 ON e.EmployeeId = c.SupportRepId
